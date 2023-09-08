@@ -5,10 +5,12 @@ import Recents from './Recents.js'
 function Form() {
   const [data, setData] = useState("")
   const [allTasks, setAllTasks] = useState([])
+  const [allRecents, setRecents] = useState([])
   
   const disabled = allTasks.length === 3 ? true : false
   
   useEffect(() => {
+    onRecentChange()
     const jsonTasks = sessionStorage.getItem('tasks');
     if (jsonTasks) {
       setAllTasks(JSON.parse(jsonTasks));
@@ -19,6 +21,13 @@ function Form() {
     setData(event.target.value)
   }
 
+  const onRecentChange = () => {
+    let json = localStorage.getItem("recentTasks")
+    let parsedTasks = JSON.parse(json)
+    setRecents(parsedTasks)
+    console.log(allRecents)
+}
+
   const removeTasks = () => {
     setAllTasks([])
   }
@@ -28,7 +37,6 @@ function Form() {
     if (data.length === 0) {
       alert("please write")
     }
-    console.log(allTasks) 
     let tasks = [];
     if (sessionStorage.getItem('tasks')) {
       let json = sessionStorage.getItem('tasks');
@@ -36,7 +44,8 @@ function Form() {
     }
     tasks = [...tasks, data];
     sessionStorage.setItem('tasks', JSON.stringify(tasks));
-    setAllTasks(tasks);
+    setAllTasks(tasks)
+    setData('')
   }
 
   return (
@@ -52,8 +61,8 @@ function Form() {
           </div>
         </form>
       </div>
-      <Tasks allTasks={allTasks} removeTasks={removeTasks}/>
-      <Recents allTasks={allTasks}/>
+      <Tasks updateRecents={onRecentChange} allTasks={allTasks} removeTasks={removeTasks}/>
+      <Recents allRecents={allRecents}/>
     </>
   )
 } 

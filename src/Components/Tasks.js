@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Tasks({ allTasks, removeTasks }) {
+function Tasks({ allTasks, removeTasks, updateRecents }) {
 
     const [clicked, setClicked] = useState(false)
     const [selectedTask, setSelectedTask] = useState(null);
@@ -20,6 +20,7 @@ function Tasks({ allTasks, removeTasks }) {
             if(tasks.length === 6){
                 tasks.pop()
             }
+            updateRecents()
             localStorage.setItem("recentTasks", JSON.stringify(tasks))
     }
     
