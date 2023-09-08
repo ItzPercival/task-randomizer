@@ -7,7 +7,6 @@ function Tasks({ allTasks, removeTasks }) {
     
     const handleClick = (e) => {
         e.preventDefault()
-        if(allTasks === 3){
             setClicked(true)
             const number = Math.floor(Math.random() * allTasks.length);
             setSelectedTask(allTasks[number])
@@ -22,7 +21,6 @@ function Tasks({ allTasks, removeTasks }) {
                 tasks.pop()
             }
             localStorage.setItem("recentTasks", JSON.stringify(tasks))
-        }
     }
     
     const handleReload = (e) => {

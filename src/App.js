@@ -1,13 +1,12 @@
 import Navbar from "./Components/Navbar"
-import Content from "./Components/Form"
-import Recents from './Components/Recents'
+import Content from "./Components/Content"
 
 function App() {
   return (
     <>
       <Navbar />
       <Content />
-      <Recents />
+      
     </>
   );
 }
