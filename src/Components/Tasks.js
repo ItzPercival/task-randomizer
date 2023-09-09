@@ -7,6 +7,7 @@ function Tasks({ allTasks, removeTasks, updateRecents }) {
     const [error, setError] = useState(false);
     
     const handleClick = (e) => {
+        setError(false)
         e.preventDefault()
         setClicked(true)
         const number = Math.floor(Math.random() * allTasks.length);
@@ -44,7 +45,7 @@ function Tasks({ allTasks, removeTasks, updateRecents }) {
                     if(task === selectedTask && clicked === true){
                         return ( 
                         <div className="card" key={i}>
-                            <div className="card-body bg-success" style={{transition: 1.5,}}>
+                            <div className="card-body bg-success" style={{transition: "all 1.5 ease-out",}}>
                                 <h5 className="m-1 card-title">{task}</h5>
                             </div>
                         </div>

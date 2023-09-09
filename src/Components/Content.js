@@ -34,7 +34,7 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (data.length === 0) {
-      alert("please write")
+      return alert("please write")
     }
     let tasks = [];
     if (sessionStorage.getItem('tasks')) {
