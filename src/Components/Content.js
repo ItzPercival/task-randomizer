@@ -25,7 +25,6 @@ function Form() {
     let json = localStorage.getItem("recentTasks")
     let parsedTasks = JSON.parse(json)
     setRecents(parsedTasks)
-    console.log(allRecents)
 }
 
   const removeTasks = () => {
